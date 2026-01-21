@@ -15,6 +15,12 @@ public class RideRepositoryImpl implements RideRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
+    @Override
+    public Ride createRide(Ride ride){
+       jdbcTemplate.update("insert into ride (name, duration) values (?,?)", ride.getName(), ride.getDuration());
+       return null;
+    }
+
 	@Override
 	public List<Ride> getRides() {
 		Ride ride = new Ride();
