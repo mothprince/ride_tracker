@@ -19,8 +19,8 @@ public class RestControllerTest {
         RestTemplate restTemplate = new RestTemplate();
 
         Ride ride = new Ride();
-        ride.setName("Splash Mountain");
-        ride.setDuration(66);
+        ride.setName("Doc Ock's Turbo Twister");
+        ride.setDuration(88);
 
         restTemplate.postForObject("http://localhost:8080/ride_tracker/ride", ride, Ride.class);
         System.out.println("Ride: " + ride);
