@@ -40,6 +40,7 @@ public class RideRepositoryImpl implements RideRepository {
        return getRide(id.intValue());
     }
 
+    @Override
     public Ride getRide(Integer id){
         return jdbcTemplate.queryForObject("select * from ride where id = ?", new RideRowMapper(), id);
     }
