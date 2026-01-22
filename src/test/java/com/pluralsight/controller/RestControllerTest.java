@@ -2,6 +2,7 @@ package com.pluralsight.controller;
 
 import java.util.List;
 
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -62,5 +63,19 @@ public class RestControllerTest {
     public void testBatchUpdate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getForObject("http://localhost:8080/ride_tracker/batch", Object.class);
+    }
+
+    @Test
+    public void testDelete() {
+        RestTemplate restTemplate = new RestTemplate();
+//        Ride ride = new Ride();
+//        ride.setName("Don't Eat Me");
+//        ride.setDuration(23);
+//        Ride newRide = restTemplate.postForObject("http://localhost:8080/ride_tracker/ride", ride, Ride.class);
+//
+//        Assert.assertEquals("Don't Eat Me", newRide.getName());
+
+//        restTemplate.delete("http://localhost:8080/ride_tracker/delete/" + newRide.getId());
+        restTemplate.delete("http://localhost:8080/ride_tracker/delete/3");
     }
 }
