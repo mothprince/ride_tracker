@@ -49,5 +49,12 @@ public class RideRepositoryImpl implements RideRepository {
 	public List<Ride> getRides() {
         return jdbcTemplate.query("select * from ride", new RideRowMapper());
 	}
-	
+
+    @Override
+    public Ride updateRide(Ride ride) {
+        jdbcTemplate.update("update ride set name = ?, duration = ? where id = ?", ride.getName(), ride.getDuration(), ride.getId());
+
+        return getRide(ride.getId());
+    }
+
 }
