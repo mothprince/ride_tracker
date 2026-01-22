@@ -57,4 +57,10 @@ public class RestControllerTest {
         restTemplate.put("http://localhost:8080/ride_tracker/ride", ride);
         System.out.println("Ride: " + ride);
     }
+
+    @Test
+    public void testBatchUpdate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject("http://localhost:8080/ride_tracker/batch", Object.class);
+    }
 }
