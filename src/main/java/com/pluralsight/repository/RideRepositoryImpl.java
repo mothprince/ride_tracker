@@ -10,7 +10,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -30,14 +29,11 @@ public class RideRepositoryImpl implements RideRepository {
 //       jdbcTemplate.update("insert into ride (name, duration) values (?,?)", ride.getName(), ride.getDuration());
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(new PreparedStatementCreator() {
-            @Override
-            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement ps = connection.prepareStatement("insert into ride (name, duration) values (?,?)", new String[]{"id"});
-                ps.setString(1, ride.getName());
-                ps.setInt(2, ride.getDuration());
-                return ps;
-            }
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement("insert into ride (name, duration) values (?,?)", new String[]{"id"});
+            ps.setString(1, ride.getName());
+            ps.setInt(2, ride.getDuration());
+            return ps;
         }, keyHolder);
 
         Number id = keyHolder.getKey();

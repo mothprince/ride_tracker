@@ -82,6 +82,6 @@ public class RestControllerTest {
     @Test
     public void testException() {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getForObject("http://localhost:8080/ride_tracker/test", Ride.class);
+        System.out.println(restTemplate.getForObject("http://localhost:8080/ride_tracker/test", Ride.class));
     }
 }

@@ -45,7 +45,7 @@ public class RideController {
     }
 
     @RequestMapping(value = "/batch", method = RequestMethod.GET)
-    public @ResponseBody Ride batch(){
+    public @ResponseBody Object batch(){
         rideService.batch();
         return null;
     }
@@ -57,7 +57,7 @@ public class RideController {
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public @ResponseBody Ride test() {
+    public @ResponseBody Object test() {
         throw new DataAccessException("Testing exception") {
         };
     }
