@@ -78,4 +78,10 @@ public class RestControllerTest {
 //        restTemplate.delete("http://localhost:8080/ride_tracker/delete/" + newRide.getId());
         restTemplate.delete("http://localhost:8080/ride_tracker/delete/3");
     }
+
+    @Test
+    public void testException() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject("http://localhost:8080/ride_tracker/test", Ride.class);
+    }
 }
